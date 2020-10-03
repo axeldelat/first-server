@@ -2,7 +2,15 @@ const http = require('http')
 
 const server = http.createServer((request, response)=>{
     console.log('Petición entrante---- ' + request.url)
-    response.write('Hola desde node')
+
+
+    if (request.url === "/hola") {
+      response.write('Hola Koder, Bienvenido')
+    } else if (request.url == "/adios"){
+      response.write('Hasta la vista Baby')
+    } else {
+      response.write('Hola desde Node')
+    }
     response.end()
 })
 
