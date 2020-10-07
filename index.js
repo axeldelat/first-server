@@ -1,4 +1,17 @@
-const http = require('http')
+const http = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World')
+})
+
+app.listen(port, () => {
+  console.log(`First Server App listening at http://localhost:${port}`)
+})
+
+/*----Versión Anterior----
+
 
 const server = http.createServer((request, response)=>{
     console.log('Petición entrante---- ' + request.url)
@@ -22,7 +35,7 @@ const server = http.createServer((request, response)=>{
 server.listen(8080, () => {
   console.log('El servidor está escuchando el puerto 8080')
 })
-
+*/
 
 /*
 Práctica #1
@@ -51,4 +64,14 @@ Práctica #1
   (Desde servidor / código )
   Investigar como cambiar el header content-type de la respuesta
   Cambiar el header content type de la respuesta por el mime type de html
+*/
+
+/*
+PRACTICA
+Replicar el servidor que teniamos en http ahora con express
+  POST /hola -> hola desde express con post
+  GET /hola -> hola desde express con get
+  GET /adios -> adios con get
+  POST /adios adios con post
+  Cualquier metodo a culquier otra ruta => no hay nada aqui (edited)
 */
