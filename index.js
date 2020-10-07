@@ -1,41 +1,31 @@
-const http = require('express')
+const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World')
+app.post('/hola', (req, res) => {
+  res.send('hola desde express con post')
+})
+
+app.get('/hola', (req, res) => {
+  res.send('hola desde express con get')
+})
+
+app.post('/adios', (req, res) => {
+  res.send('adios con post')
+})
+
+app.get('/adios', (req, res) => {
+  res.send('adios con get')
+})
+
+app.all('/*', (req, res) => {
+  res.send('no hay nada aquí')
 })
 
 app.listen(port, () => {
   console.log(`First Server App listening at http://localhost:${port}`)
 })
 
-/*----Versión Anterior----
-
-
-const server = http.createServer((request, response)=>{
-    console.log('Petición entrante---- ' + request.url)
-    console.log('Method: ', request.method)
-    if (request.url === "/hola" && request.method === 'POST'){
-      response.write('hola Koders, estás intentando crear')
-    } else if (request.url === "/hola" && request.method === 'GET'){
-      response.write('hola koder estás intentando obtener')
-    } else if (request.url === "/adios" && request.method === 'POST'){
-      response.write('hasta la vista baby con un post')
-    } else if (request.url === "/adios" && request.method === 'GET'){
-      response.write('Hasta la vista baby con get')
-    }
-    else {
-      response.setHeader('Content-Type', 'text/html')
-      response.write('Tu eres un Koder y yo soy un Texto HTML')
-    }
-    response.end()
-})
-
-server.listen(8080, () => {
-  console.log('El servidor está escuchando el puerto 8080')
-})
-*/
 
 /*
 Práctica #1
@@ -67,7 +57,7 @@ Práctica #1
 */
 
 /*
-PRACTICA
+Práctica #4
 Replicar el servidor que teniamos en http ahora con express
   POST /hola -> hola desde express con post
   GET /hola -> hola desde express con get
